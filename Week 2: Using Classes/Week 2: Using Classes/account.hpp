@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <string>
+
 class Account {
 private:
     int accountID;
@@ -18,7 +19,9 @@ private:
     float accountBalance;
 public:
     Account();
-    void EstablishAccount();
+    int getAccountID() const;
+    void EstablishAccount(int AccountID);
+    void AccountMenu();
     void DisplayInfo();
     void Deposit(float amount);
     void Withdrawl(float amount);

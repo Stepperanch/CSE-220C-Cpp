@@ -6,9 +6,80 @@
 //
 
 #include <iostream>
-
+#include "Account.hpp"
 
 int main(int argc, const char * argv[]) {
-    
+    int accountID = 0;
+    bool exit = false;
+    int choice;
+    bool found = false;
+    std::vector<Account> accounts;
+    std::cout << "Welcome to the banking App" << std::endl << std::endl;
+    do {
+        std::cout << "Chose one of the folowing" << std::endl;
+        std::cout << "1. Create a new account" << std::endl;
+        std::cout << "2. Access an existing account" << std::endl;
+        std::cout << "4. Close an account" << std::endl;
+        std::cout << "4. Exit" << std::endl;
+        std::cin >> choice;
+        switch (choice) {
+            case 1: {
+                std::cout << "Creating a new account" << std::endl;
+                Account newAccount;
+                newAccount.EstablishAccount(accountID);
+                accounts.push_back(newAccount);
+                accountID++;
+                break;
+            }
+            case 2: {
+                std::cout << "Accessing an existing account" << std::endl;
+                std::cout << "Enter account ID: ";
+                std::cin >> accountID;
+                for (size_t i = 0; i < accounts.size(); i++) {
+                    if (accounts[i].getAccountID() == accountID) {
+                        accounts[i].AccountMenu();
+                        found = true;
+                        break;
+                    }   
+                    else {
+                        found = false;
+                    }
+                }
+                if (!found) {
+                    std::cout << "Account not found" << std::endl;
+                }
+                break;
+            }
+            case 3:{
+                std::cout << "Removing an existing account" << std::endl;
+                std::cout << "Enter account ID: ";
+                std::cin >> accountID;
+                for (size_t i = 0; i < accounts.size(); i++) {
+                    if (accounts[i].getAccountID() == accountID) {
+                        accounts.erase(accounts.begin() + i);
+                        found = true;
+                        break;
+                    }
+                    else {
+                        found = false;
+                    }
+                }
+                if (!found) {
+                    std::cout << "Account not found" << std::endl;
+                }
+                break;
+            }
+            case 4:{
+                exit = true;
+                break;
+            }
+            default:{
+                std::cout << "Invalid choice" << std::endl;
+                break;
+            }
+        }
+    } while(!exit);
+
+
     return 0;
 }

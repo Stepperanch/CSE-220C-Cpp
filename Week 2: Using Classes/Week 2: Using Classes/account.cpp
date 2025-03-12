@@ -26,6 +26,7 @@
 #include "Account.hpp"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 Account::Account() {
     accountID = 0;
@@ -39,16 +40,18 @@ int Account::getAccountID() const {
 
 void Account::EstablishAccount(int AccountID) {
     accountID = AccountID;
-    std::cout << "Enter name: ";
+    std::cout << "Enter name: (No Spaces) ";
     std::cin >> name;
     std::cout << "Enter account balance: ";
     std::cin >> accountBalance;
+    std::cout << "Account ID: " << accountID << std::endl;
 }
 
 void Account::AccountMenu() {
     int choice;
     bool exit = false;
     do {
+        std::cout << "" << std::endl;
         std::cout << "Account Menu" << std::endl;
         std::cout << "1. Display account info" << std::endl;
         std::cout << "2. Deposit" << std::endl;

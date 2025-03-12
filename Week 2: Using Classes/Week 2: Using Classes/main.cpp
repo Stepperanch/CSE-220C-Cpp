@@ -9,26 +9,28 @@
 #include "Account.hpp"
 
 int main(int argc, const char * argv[]) {
-    int accountID = 0;
-    bool exit = false;
+    int accountID;
     int choice;
+    int accountIDCount = 0;
+    bool exit = false;
     bool found = false;
     std::vector<Account> accounts;
     std::cout << "Welcome to the banking App" << std::endl << std::endl;
     do {
+        std::cout << "" << std::endl;
         std::cout << "Chose one of the folowing" << std::endl;
         std::cout << "1. Create a new account" << std::endl;
         std::cout << "2. Access an existing account" << std::endl;
-        std::cout << "4. Close an account" << std::endl;
+        std::cout << "3. Close an account" << std::endl;
         std::cout << "4. Exit" << std::endl;
         std::cin >> choice;
         switch (choice) {
             case 1: {
                 std::cout << "Creating a new account" << std::endl;
                 Account newAccount;
-                newAccount.EstablishAccount(accountID);
+                newAccount.EstablishAccount(accountIDCount);
                 accounts.push_back(newAccount);
-                accountID++;
+                accountIDCount++;
                 break;
             }
             case 2: {
@@ -78,8 +80,5 @@ int main(int argc, const char * argv[]) {
                 break;
             }
         }
-    } while(!exit);
-
-
-    return 0;
+    } while(!exit);    
 }

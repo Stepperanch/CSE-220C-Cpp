@@ -14,13 +14,14 @@
 
 class Account {
 private:
+    static int nextAccountID;
     int accountID;
     std::string name;
     float accountBalance;
 public:
     Account();
     int getAccountID() const;
-    void EstablishAccount(int AccountID);
+    void EstablishAccount();
     void AccountMenu();
     void DisplayInfo();
     void Deposit(float amount);

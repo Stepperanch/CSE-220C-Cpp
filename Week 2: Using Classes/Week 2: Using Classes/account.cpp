@@ -28,8 +28,11 @@
 #include <string>
 #include <iomanip>
 
+int Account::nextAccountID = 0;
+
 Account::Account() {
-    accountID = 0;
+    accountID = nextAccountID;
+    nextAccountID++;
     name = "";
     accountBalance = 0.0;
 }
@@ -38,8 +41,7 @@ int Account::getAccountID() const {
     return accountID;
 }
 
-void Account::EstablishAccount(int AccountID) {
-    accountID = AccountID;
+void Account::EstablishAccount() {
     std::cout << "Enter name: (No Spaces) ";
     std::cin >> name;
     std::cout << "Enter account balance: ";
@@ -52,7 +54,7 @@ void Account::AccountMenu() {
     bool exit = false;
     do {
         std::cout << "" << std::endl;
-        std::cout << "Account Menu" << std::endl;
+        std::cout << "Account " << accountID << " Menu" << std::endl;
         std::cout << "1. Display account info" << std::endl;
         std::cout << "2. Deposit" << std::endl;
         std::cout << "3. Withdrawl" << std::endl;

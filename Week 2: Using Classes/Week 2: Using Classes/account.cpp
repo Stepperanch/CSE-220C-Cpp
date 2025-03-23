@@ -41,6 +41,14 @@ int Account::getAccountID() const {
     return accountID;
 }
 
+std::string Account::getName() const {
+    return name;
+}
+
+float Account::getAccountBalance() const {
+    return accountBalance;
+}
+
 void Account::EstablishAccount() {
     std::cout << "Enter name: (No Spaces) ";
     std::cin >> name;

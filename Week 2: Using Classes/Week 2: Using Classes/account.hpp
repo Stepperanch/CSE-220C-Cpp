@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <string>
+#include <list>
 
 class Account {
 private:
@@ -21,6 +22,8 @@ private:
 public:
     Account();
     int getAccountID() const;
+    std::string getName() const;
+    float getAccountBalance() const;
     void EstablishAccount();
     void AccountMenu();
     void DisplayInfo();

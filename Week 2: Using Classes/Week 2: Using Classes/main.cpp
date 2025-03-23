@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  Week 2: Using Classes
+//  Week 4: Using Classes
 //
 //  Created by Nels Buhrley  on 3/7/25.
 //
@@ -108,7 +108,7 @@ int main(int argc, const char * argv[]) {
             case 4:{
                 std::cout << "Displaying all accounts\n" << std::endl;
                 display_all_accounts(accounts);
-                
+                pressAnyKey();
                 break;
             }
             case 5:{

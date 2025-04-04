@@ -35,6 +35,12 @@ Account::Account() {
     nextAccountID++;
     name = "";
     accountBalance = 0.0;
+    contact = nullptr;
+}
+
+void Account::AddContact() {
+    contact = std::make_shared<Contact>();
+    contact->SetInfo();
 }
 
 int Account::getAccountID() const {
@@ -66,7 +72,8 @@ void Account::AccountMenu() {
         std::cout << "1. Display account info" << std::endl;
         std::cout << "2. Deposit" << std::endl;
         std::cout << "3. Withdrawl" << std::endl;
-        std::cout << "4. Exit" << std::endl;
+        std::cout << "4. Add Contact Information" << std::endl;
+        std::cout << "5. Exit" << std::endl;
         std::cin >> choice;
         switch (choice) {
             case 1: {
@@ -88,6 +95,14 @@ void Account::AccountMenu() {
                 break;
             }
             case 4: {
+                if (contact == nullptr) {
+                    AddContact();
+                } else {
+                    std::cout << "Contact already exists." << std::endl;
+                }
+                break;
+            }
+            case 5: {
                 exit = true;
                 break;
             }
@@ -101,8 +116,11 @@ void Account::AccountMenu() {
 
 void Account::DisplayInfo() {
     std::cout << "Account ID: " << accountID << std::endl;
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Account balance: " << accountBalance << std::endl;
+    std::cout << "  Name: " << name << std::endl;
+    std::cout << "  Account balance: " << accountBalance << std::endl;
+    if (contact != nullptr) {
+        contact->DisplayInfo();
+    } 
 }
 
 void Account::Deposit(float amount) {

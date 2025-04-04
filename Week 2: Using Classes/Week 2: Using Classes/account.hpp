@@ -12,17 +12,25 @@
 #include <stdio.h>
 #include <string>
 #include <list>
+#include "Contact.hpp"
+#include <memory>
+
+using std::shared_ptr;
+using std::string;
+using std::ostream;
 
 class Account {
 private:
     static int nextAccountID;
     int accountID;
-    std::string name;
+    string name;
     float accountBalance;
+    shared_ptr<Contact> contact;
 public:
     Account();
+    void AddContact();
     int getAccountID() const;
-    std::string getName() const;
+    string getName() const;
     float getAccountBalance() const;
     void EstablishAccount();
     void AccountMenu();
@@ -31,7 +39,7 @@ public:
     void Withdrawl(float amount);
     Account& operator+= (float amount);
     Account& operator-= (float amount);
-    std::ostream& display(std::ostream& out) const;
+    ostream& display(ostream& out) const;
 };
 #endif /* account_hpp */
 
